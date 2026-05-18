@@ -1,6 +1,6 @@
 # REMIND
 
-Official-style cleaned code for **REMIND: Retrieval-Augmented Reconstruction With Dual Memories for Modality-Missing Object Re-Identification**.
+Code for **REMIND: Retrieval-Augmented Reconstruction With Dual Memories for Modality-Missing Object Re-Identification**.
 
 This version keeps the code aligned with the paper and removes unrelated debugging, visualization, cache, and legacy files. The main pipeline contains two core components:
 
