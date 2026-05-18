@@ -56,6 +56,3 @@ python test_net.py \
   --config_file configs/RGBNT201/REMIND.yml \
   TEST.MISS r
 ```
-
-`TEST.WEIGHT_PATH`, `TEST.MEMORY_PATH`, `TEST.MEMORY_N`, and latency-related settings are defined in the yml file. Command-line arguments are only kept as optional overrides.
-
