@@ -48,7 +48,7 @@ class AttentionReturningEncoderLayer(nn.TransformerEncoderLayer):
         src2 = self.linear2(self.dropout(self.activation(self.linear1(src))))
         src = src + self.dropout2(src2)
         src = self.norm2(src)
-        return src, attn_weights  # 返回注意力矩阵
+        return src, attn_weights  
 
 
 class ModalityCommonExtractor(nn.Module):
@@ -83,20 +83,19 @@ class ModalityCommonExtractor(nn.Module):
         miss_bin = mask_map.get(miss, [0, 0, 0])
         attn_mask = torch.tensor(miss_bin, dtype=torch.bool, device=device).unsqueeze(0).repeat(B, 1)
 
-        # transformer 只含1层 encoder layer，所以直接调用该层
+        
         shared_all, attn_weights = self.encoder_layer(fused, src_key_padding_mask=attn_mask)
 
         shared_r = shared_all[:, 0, :]
         shared_n = shared_all[:, 1, :]
         shared_t = shared_all[:, 2, :]
 
-        # attn_weights 形状 [B * num_heads, 3, 3] 或者 [B, num_heads, 3, 3]
-        # 根据实际维度调整
+        
         if attn_weights.dim() == 3:
             attn_weights = attn_weights.unsqueeze(1)  # [B, 1, 3, 3]
-        attn_avg = attn_weights.mean(dim=1)  # 平均所有 head，[B, 3, 3]
+        attn_avg = attn_weights.mean(dim=1)  # [B, 3, 3]
 
-        # 取每个模态对自身的注意力强度
+    
         attn_r = attn_avg[:, 0, 0].unsqueeze(1)
         attn_n = attn_avg[:, 1, 1].unsqueeze(1)
         attn_t = attn_avg[:, 2, 2].unsqueeze(1)
@@ -161,32 +160,13 @@ class TextGuidedCrossAttentionBlock(nn.Module):
         return fina
 
 def average_memory_features_by_labels(memory: MemoryBank, topk_labels: torch.Tensor) -> torch.Tensor:
-    """
-    给定 top-K 标签，从 memory 中取出特征并求平均。
-    Args:
-        memory (MemoryBank): 用于查找特征的 memory bank
-        topk_labels (Tensor): top-K 标签，形状为 [K]
-    Returns:
-        Tensor: 平均特征，形状为 [feature_dim]
-    """
+
     feats = memory.get_features_by_labels(topk_labels)  # [K, C]
     avg_feat = feats.mean(dim=0)  # [C]
     return avg_feat
 
 def retrieve_specific_memory_priors(query_feats: torch.Tensor, query_memory: MemoryBank, target_memory: MemoryBank, k=5):
-    """
-    对于一个 batch 的 query_feats，从 query_memory 中找 top-k 标签，
-    然后从 target_memory 中取出对应特征并取平均。
-    
-    Args:
-        query_feats: [B, C] 查询特征
-        query_memory: 查询模态的 memory bank
-        target_memory: 用于取平均特征的 memory bank
-        k: top-k 数量
 
-    Returns:
-        Tensor: [B, C] 每个样本的平均特征
-    """
     avg_feats = []
     for i in range(query_feats.size(0)):
         topk_labels, _ = query_memory.get_topk_labels(query_feats[i], k)
