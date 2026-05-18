@@ -2,11 +2,6 @@
 
 Code for **REMIND: Retrieval-Augmented Reconstruction With Dual Memories for Modality-Missing Object Re-Identification**.
 
-This version keeps the code aligned with the paper and removes unrelated debugging, visualization, cache, and legacy files. The main pipeline contains two core components:
-
-- **Dual Memory Construction (DMC)**: extracts modality-specific and modality-common features and stores them in dedicated memory banks.
-- **Retrieval-augmented Missing Reconstruction (RMR)**: retrieves identity-aware memory priors and reconstructs missing modality features through multi-path reconstruction.
-
 ## Main files
 
 ```text
@@ -64,9 +59,3 @@ python test_net.py \
 
 `TEST.WEIGHT_PATH`, `TEST.MEMORY_PATH`, `TEST.MEMORY_N`, and latency-related settings are defined in the yml file. Command-line arguments are only kept as optional overrides.
 
-## Notes
-
-- `engine/processor.py` now only contains the training and inference loops.
-- Epoch-dependent loss composition has been moved to `engine/remind_losses.py`.
-- Configs are named `REMIND.yml` and old experiment/debug names are removed.
-- All tunable REMIND hyperparameters are centralized under the `REMIND` section in each yml file, including memory warm-up/momentum, DMC attention settings, RMR retrieval and perturbation settings, and loss weights/schedule.
