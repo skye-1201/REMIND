@@ -1,58 +1,105 @@
-# REMIND
+<p align="center">
+  <h1 align="center">REMIND: Retrieval-Augmented Reconstruction With Dual Memories for Modality-Missing Object Re-Identification</h1>
+</p>
 
-The code for **REMIND: Retrieval-Augmented Reconstruction with Dual Memories for Modality-Missing Object Re-Identification** will be updated later.
+---
 
-## Main files
+## Introduction
+
+This repository provides the official implementation of **REMIND: Retrieval-Augmented Reconstruction With Dual Memories for Modality-Missing Object Re-Identification**.
+
+---
+
+## Recommended Hardware
+
+We recommend using an NVIDIA **RTX 3090** or **RTX 4090** GPU for training and evaluation.
+
+---
+
+## Environment Setup
+
+We recommend using `conda` to create a new environment.
+
+```bash
+conda create -n remind python=3.8 -y
+conda activate remind
+```
+
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+If the `pip` command does not work properly, please use:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+---
+
+## Pretrained Models
+
+* **CLIP**: [Baidu Pan](https://pan.baidu.com/s/1YPhaL0YgpI-TQ_pSzXHRKw)  
+  Extraction code: `52fu`
+
+---
+
+## Configuration
+
+The configuration files for different datasets are listed as follows:
 
 ```text
-REMIND_refactored/
-├── train_net.py
-├── test_net.py
-├── config/
-├── configs/
-│   ├── RGBNT100/REMIND.yml
-│   ├── RGBNT201/REMIND.yml
-│   ├── MSVR310/REMIND.yml
-│   └── WMVEID863/REMIND.yml
-├── data/
-├── engine/
-│   ├── processor.py
-│   └── remind_losses.py
-├── layers/
-├── modeling/
-│   ├── make_model.py
-│   ├── meta_arch.py
-│   ├── MemoryBank/
-│   ├── clip/
-│   └── moe/
-├── solver/
-└── utils/
+RGBNT100:   configs/RGBNT100/DeMo.yml
+MSVR310:    configs/MSVR310/DeMo.yml
+WMVEID863:  configs/WMVEID863/DeMo.yml
+RGBNT201:   configs/RGBNT201/DeMo.yml
 ```
+
+---
 
 ## Training
 
+Example training command on MSVR310:
+
 ```bash
-python train_net.py --config_file configs/RGBNT201/REMIND.yml
-python train_net.py --config_file configs/RGBNT100/REMIND.yml
-python train_net.py --config_file configs/MSVR310/REMIND.yml
-python train_net.py --config_file configs/WMVEID863/REMIND.yml
+conda activate remind
+cd /path/to/REMIND
+
+python train_net.py \
+  --config_file configs/MSVR310/DeMo.yml
 ```
 
-You can also run the dataset scripts:
+---
+
+## Testing
+
+Example testing command on MSVR310:
 
 ```bash
-bash RGBNT201.sh
-bash RGBNT100.sh
-bash MSVR310.sh
-bash WMVEID863.sh
-```
+conda activate remind
+cd /path/to/REMIND
 
-## Testing a missing-modality case
-
-Set `TEST.MISS` by command line. Supported values are `r`, `n`, `t`, `rn`, `rt`, `nt`, and empty string for the complete-modality setting.
-
-```bash
 python test_net.py \
-  --config_file configs/RGBNT201/REMIND.yml \
-  TEST.MISS r
+  --config_file configs/MSVR310/DeMo.yml \
+  OUTPUT_DIR /path/to/output_or_checkpoint_dir 
+
+```
+
+
+---
+
+## Notes
+
+This codebase is built upon [DeMo](https://github.com/924973292/DeMo).
+
+---
+
+## Contact
+
+If you have any questions, please feel free to contact us by email:
+
+```text
+zhendongxu1201@foxmail.com
 ```
