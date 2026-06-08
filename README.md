@@ -51,10 +51,10 @@ python -m pip install -r requirements.txt
 The configuration files for different datasets are listed as follows:
 
 ```text
-RGBNT100:   configs/RGBNT100/DeMo.yml
-MSVR310:    configs/MSVR310/DeMo.yml
-WMVEID863:  configs/WMVEID863/DeMo.yml
-RGBNT201:   configs/RGBNT201/DeMo.yml
+RGBNT100:   configs/RGBNT100/REMIND.yml
+MSVR310:    configs/MSVR310/REMIND.yml
+WMVEID863:  configs/WMVEID863/REMIND.yml
+RGBNT201:   configs/RGBNT201/REMIND.yml
 ```
 
 ---
@@ -68,7 +68,7 @@ conda activate remind
 cd /path/to/REMIND
 
 python train_net.py \
-  --config_file configs/MSVR310/DeMo.yml
+  --config_file configs/MSVR310/REMIND.yml
 ```
 
 ---
@@ -82,7 +82,7 @@ conda activate remind
 cd /path/to/REMIND
 
 python test_net.py \
-  --config_file configs/MSVR310/DeMo.yml \
+  --config_file configs/MSVR310/REMIND.yml \
   OUTPUT_DIR /path/to/output_or_checkpoint_dir 
 
 ```
