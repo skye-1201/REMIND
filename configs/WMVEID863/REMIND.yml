@@ -46,7 +46,6 @@ TEST:
   NECK_FEAT: 'before'
   FEAT_NORM: 'yes'
   MISS: "noting"
-  # RATIO: 0.0
 
 OUTPUT_DIR: ''
 SAVE_LIST: ['modeling/make_model.py', 'engine/processor.py']
