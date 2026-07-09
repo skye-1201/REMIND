@@ -45,7 +45,7 @@ TEST:
   WEIGHT: ''
   NECK_FEAT: 'before'
   FEAT_NORM: 'yes'
-  MISS: "noting"
+  MISS: "nothing"
 
 OUTPUT_DIR: ''
 SAVE_LIST: ['modeling/make_model.py', 'engine/processor.py']
