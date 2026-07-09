@@ -50,5 +50,3 @@ TEST:
 
 OUTPUT_DIR: ''
 SAVE_LIST: ['modeling/make_model.py', 'engine/processor.py']
-
-
