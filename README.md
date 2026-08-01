@@ -27,7 +27,8 @@ Experiments are conducted on four multi-modal object Re-ID benchmarks: **RGBNT10
 
 <!-- ==================== Insert Figure here ==================== -->
 <!--
-<img width="1572" alt="The overall REMIND framework" src="" />
+<img width="1572" alt="The overall REMIND framework" src="![Uploading Fig2_01.png…]()
+" />
 -->
 
 <p align="center"><em>Figure . The overall REMIND framework, including Dual Memory Construction and Retrieval-Augmented Missing Reconstruction.</em></p>
