@@ -202,7 +202,7 @@ def do_train(cfg,
     person_mode = is_person_setting(cfg)
 
     logging.getLogger().setLevel(logging.INFO)
-    logger = logging.getLogger("DeMo.train")
+    logger = logging.getLogger("REMIND.train")
     logger.info('start training')
     logger.info("MODEL.DIRECT = {} ({})".format(cfg.MODEL.DIRECT, "persontrian" if person_mode else "vehicle"))
 
@@ -379,7 +379,7 @@ def do_inference(cfg,
                  st_memory,
                  return_pattern=1):
     device = "cuda"
-    logger = logging.getLogger("DeMo.test")
+    logger = logging.getLogger("REMIND.test")
     logger.info("Enter inferencing")
 
     evaluator = build_evaluator(cfg, num_query)
