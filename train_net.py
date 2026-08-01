@@ -28,7 +28,7 @@ def set_seed(seed=1111):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="DeMo Training")
+    parser = argparse.ArgumentParser(description="REMIND Training")
     parser.add_argument("--config_file", default="", help="path to config file", type=str)
     parser.add_argument("--fea_cft", default=0, help="Feature choose to be tested", type=int)
     parser.add_argument("opts", help="Modify config options using the command-line", default=None,
@@ -58,7 +58,7 @@ if __name__ == '__main__':
         shutil.copyfile(f, file_save_path)
         os.chmod(file_save_path, 0o400)  # read only
 
-    logger = setup_logger("DeMo", output_dir, if_train=True)
+    logger = setup_logger("REMIND", output_dir, if_train=True)
     logger.info("Saving model in the path :{}".format(cfg.OUTPUT_DIR))
     logger.info(args)
 
