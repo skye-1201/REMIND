@@ -26,12 +26,17 @@ REMIND contains two key components. The **Dual Memory Construction (DMC)** modul
 Experiments are conducted on four multi-modal object Re-ID benchmarks: **RGBNT100**, **MSVR310**, **WMVEID863**, and **RGBNT201**, covering fixed modality-missing, randomly missing, and complete-modality settings.
 
 <!-- ==================== Insert Figure here ==================== -->
-<!--
-<img width="1572" alt="The overall REMIND framework" src="<img width="2145" height="1010" alt="Fig2_01" src="https://github.com/user-attachments/assets/96d6b59e-53ea-4fd1-a18b-cceac9d7001a" />
-" />
--->
+<p align="center">
+  <img
+    width="1572"
+    alt="The overall REMIND framework"
+    src="https://github.com/user-attachments/assets/96d6b59e-53ea-4fd1-a18b-cceac9d7001a"
+  />
+</p>
 
-<p align="center"><em>Figure . The overall REMIND framework, including Dual Memory Construction and Retrieval-Augmented Missing Reconstruction.</em></p>
+<p align="center">
+  <em>Figure. The overall REMIND framework, including Dual Memory Construction and Retrieval-Augmented Missing Reconstruction.</em>
+</p>
 
 
 ## Installation
