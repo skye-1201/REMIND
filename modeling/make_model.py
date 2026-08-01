@@ -236,9 +236,9 @@ def get_avg_features_batch(query_feats: torch.Tensor,
     return torch.stack(avg_feats, dim=0)  # [B, C]
 
 
-class DeMo(nn.Module):
+class REMIND(nn.Module):
     def __init__(self, num_classes, cfg, camera_num, view_num, memory, factory):
-        super(DeMo, self).__init__()
+        super(REMIND, self).__init__()
 
         if 'vit_base_patch16_224' in cfg.MODEL.TRANSFORMER_TYPE:
             self.feat_dim = 768
@@ -670,8 +670,8 @@ __factory_T_type = {
 
 
 def make_model(cfg, num_class, camera_num, view_num=0, memory=None):
-    model = DeMo(num_class, cfg, camera_num, view_num,memory, __factory_T_type)
-    print('===========Building DeMo===========')
+    model = REMIND(num_class, cfg, camera_num, view_num,memory, __factory_T_type)
+    print('===========Building REMIND===========')
     return model
 
 
