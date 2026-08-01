@@ -7,7 +7,6 @@ import torch
 import sys,os
 from pytorch_grad_cam import GradCAM
 from pytorch_grad_cam.utils.image import show_cam_on_image
-sys.path.append('/data/xuzhendong/DeMo-master')
 from config import cfg
 from data import make_dataloader
 from modeling import make_model
@@ -15,7 +14,7 @@ from utils.logger import setup_logger
 
 parser = argparse.ArgumentParser(description="ReID Baseline Inference")
 parser.add_argument(
-    "--config", default="/data/xuzhendong/DeMo-master/configs/RGBNT100/DeMo.yml", help="path to config file", type=str
+    "--config", default="", help="path to config file", type=str
     # "--config", default="/data/sunyongqi/codes/FrenNet/FrenNet-main/logs/clip/m863_deit_Fusion+(Sort+SCME)/transformerbest.pth", help="path to config file", type=str
     
 )
@@ -116,7 +115,7 @@ def show_cam(index, imgpath, grayscale_cam, modality, cfg, n_iter):
 
 # 主函数入口
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="DeMo Testing")
+    parser = argparse.ArgumentParser(description="REMIND Testing")
     parser.add_argument("--config_file", default="", help="Path to config file", type=str)
     parser.add_argument("opts", help="Modify config options via command line", default=None, nargs=argparse.REMAINDER)
 
@@ -131,7 +130,7 @@ if __name__ == "__main__":
     # 设置输出目录和日志
     output_dir = cfg.OUTPUT_DIR
     os.makedirs(output_dir, exist_ok=True)
-    logger = setup_logger("DeMo", output_dir, if_train=False)
+    logger = setup_logger("REMIND", output_dir, if_train=False)
     logger.info(args)
 
     if args.config_file:
@@ -146,7 +145,7 @@ if __name__ == "__main__":
 
     # 加载数据集
     train_loader, train_loader_normal, val_loader, num_query, num_classes, camera_num, view_num = make_dataloader(cfg)
-    memory_data = torch.load('/data/xuzhendong/outputs_mb/100_set201_64_k15/DeMomemory.pth', map_location='cuda')
+    memory_data = torch.load('', map_location='cuda')
     rgb_memory = memory_data['rgb']  # [num_classes, 768]
     nir_memory = memory_data['nir']
     tir_memory = memory_data['tir']
@@ -156,7 +155,7 @@ if __name__ == "__main__":
     # 加载模型
     model = make_model(cfg, num_class=num_classes, camera_num=camera_num, view_num=view_num,memory=[rgb_memory,nir_memory,tir_memory,sr_memory,sn_memory,st_memory])
 
-    model.load_param("/data/xuzhendong/outputs_mb/100_set201_64_k15/DeMobest.pth")
+    model.load_param("")
     model.eval()
     model.to(device)
 
