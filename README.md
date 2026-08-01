@@ -27,7 +27,7 @@ Experiments are conducted on four multi-modal object Re-ID benchmarks: **RGBNT10
 
 <!-- ==================== Insert Figure here ==================== -->
 <!--
-<img width="1572" alt="The overall REMIND framework" src="![Uploading Fig2_01.png…]()
+<img width="1572" alt="The overall REMIND framework" src="<img width="2145" height="1010" alt="Fig2_01" src="https://github.com/user-attachments/assets/96d6b59e-53ea-4fd1-a18b-cceac9d7001a" />
 " />
 -->
 
