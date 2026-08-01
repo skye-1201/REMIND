@@ -10,7 +10,7 @@ _C.MODEL.DEVICE = "cuda"
 # ID number of GPU
 _C.MODEL.DEVICE_ID = '3'
 # Name of backbone
-_C.MODEL.NAME = 'DeMo'
+_C.MODEL.NAME = 'REMIND'
 # Path to pretrained model of backbone
 _C.MODEL.PRETRAIN_PATH_T = '/path/to/your/vitb_16_224_21k.pth'
 # Use ImageNet pretrained model to initialize backbone or use self trained model to initialize the whole model
